@@ -17,12 +17,9 @@ activityLabels[,2] <- as.character(activityLabels[,2])
 features <- read.table("UCI HAR Dataset/features.txt")
 features[,2] <- as.character(features[,2])
 
- Extract only the data on mean and standard deviation
+Extract only the data on mean and standard deviation
 featuresRequired <- grep(".*mean.*|.*std.*", features[,2])
 featuresRequired.names <- features[featuresRequired,2]
-featuresRequiredd.names = gsub('-mean', 'Mean', featuresRequired.names)
-featuresRequired.names = gsub('-std', 'Std', featuresRequired.names)
-featuresRequired.names <- gsub('[-()]', '', featuresRequired.names)
 
 train <- read.table("UCI HAR Dataset/train/X_train.txt")[featuresRequired]
 trainActivities <- read.table("UCI HAR Dataset/train/Y_train.txt")
